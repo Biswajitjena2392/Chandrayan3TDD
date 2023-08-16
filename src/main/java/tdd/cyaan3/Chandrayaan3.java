@@ -12,10 +12,32 @@ public class Chandrayaan3 {
         for(String str:commands){
             String st=str.toLowerCase();
             if(st.equals("f")){
-                coords[1]++;
+                if(directionFacing=='N')
+                    coords[1]++;
+                if(directionFacing=='S')
+                    coords[1]--;
+                if(directionFacing=='W')
+                    coords[0]--;
+                if(directionFacing=='E')
+                    coords[0]++;
+                if(directionFacing=='U')
+                    coords[2]++;
+                if(directionFacing=='D')
+                    coords[2]--;
             }
             if(st.equals("b")){
-                coords[1]--;
+                if(directionFacing=='N')
+                    coords[1]--;
+                if(directionFacing=='S')
+                    coords[1]++;
+                if(directionFacing=='W')
+                    coords[0]++;
+                if(directionFacing=='E')
+                    coords[0]--;
+                if(directionFacing=='U')
+                    coords[2]--;
+                if(directionFacing=='D')
+                    coords[2]++;
             }
             if(st.equals("l")){
                 directionFacing='W';
