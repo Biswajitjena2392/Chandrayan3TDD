@@ -21,4 +21,10 @@ class Chandrayaan3Test {
         int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"f"});
         assertArrayEquals(new int[]{0,1,0},finalcoordinates);
     }
+
+    @Test
+    void ShouldReturnPositionAfterChangingDirectionAndMovingOnce(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","f"}));
+        assertArrayEquals(new int[]{0,0,1},finalcoordinates);
+    }
 }
