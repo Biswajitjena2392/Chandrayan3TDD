@@ -28,35 +28,44 @@ public class Chandrayaan3 {
                 directionFacing=setDirection(directionFacing,prevDirection,command);
             }
             if(command.equals("f")){
-                if(directionFacing=='N')
-                    coords[1]++;
-                if(directionFacing=='S')
-                    coords[1]--;
-                if(directionFacing=='W')
-                    coords[0]--;
-                if(directionFacing=='E')
-                    coords[0]++;
-                if(directionFacing=='U')
-                    coords[2]++;
-                if(directionFacing=='D')
-                    coords[2]--;
+                coords=moveCyaanForward(coords,directionFacing);
             }
             if(command.equals("b")){
-                if(directionFacing=='N')
-                    coords[1]--;
-                if(directionFacing=='S')
-                    coords[1]++;
-                if(directionFacing=='W')
-                    coords[0]++;
-                if(directionFacing=='E')
-                    coords[0]--;
-                if(directionFacing=='U')
-                    coords[2]--;
-                if(directionFacing=='D')
-                    coords[2]++;
+                coords=moveCyaanBackward(coords,directionFacing);
             }
 
         }
+        return coords;
+    }
+    private static int[] moveCyaanForward(int[] coords, char directionFacing){
+        if(directionFacing=='N')
+            coords[1]++;
+        if(directionFacing=='S')
+            coords[1]--;
+        if(directionFacing=='W')
+            coords[0]--;
+        if(directionFacing=='E')
+            coords[0]++;
+        if(directionFacing=='U')
+            coords[2]++;
+        if(directionFacing=='D')
+            coords[2]--;
+        return coords;
+    }
+
+    private static int[] moveCyaanBackward(int[] coords, char directionFacing){
+        if(directionFacing=='N')
+            coords[1]--;
+        if(directionFacing=='S')
+            coords[1]++;
+        if(directionFacing=='W')
+            coords[0]++;
+        if(directionFacing=='E')
+            coords[0]--;
+        if(directionFacing=='U')
+            coords[2]--;
+        if(directionFacing=='D')
+            coords[2]++;
         return coords;
     }
 
