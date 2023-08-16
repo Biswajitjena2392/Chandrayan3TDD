@@ -9,10 +9,24 @@ public class Chandrayaan3 {
     private static char directionFacing='N';
     private static char prevDirection='N';
     public static int[] finalPosition(String[] commands){
+
         int[] coords=coordinates;
         for(String str:commands){
             String command=str.toLowerCase();
-            directionFacing=setDirection(directionFacing,prevDirection,command);
+            if(command.equals("l")){
+                directionFacing=setDirection(directionFacing,prevDirection,command);
+            }
+            if(command.equals("r")){
+                directionFacing=setDirection(directionFacing,prevDirection,command);
+            }
+            if(command.equals("u")){
+                prevDirection=directionFacing;
+                directionFacing=setDirection(directionFacing,prevDirection,command);
+            }
+            if(command.equals("d")){
+                prevDirection=directionFacing;
+                directionFacing=setDirection(directionFacing,prevDirection,command);
+            }
             if(command.equals("f")){
                 if(directionFacing=='N')
                     coords[1]++;
@@ -41,22 +55,9 @@ public class Chandrayaan3 {
                 if(directionFacing=='D')
                     coords[2]++;
             }
-            if(command.equals("l")){
-                directionFacing=setDirection(directionFacing,prevDirection,command);
-            }
-            if(command.equals("r")){
-                directionFacing=setDirection(directionFacing,prevDirection,command);
-            }
-            if(command.equals("u")){
-                prevDirection=directionFacing;
-                directionFacing='U';
-            }
-            if(command.equals("d")){
-                prevDirection=directionFacing;
-                directionFacing='D';
-            }
+
         }
-        return coordinates;
+        return coords;
     }
 
     private static char setDirection(char directionFacing,char prevDirection, String command){
@@ -75,6 +76,7 @@ public class Chandrayaan3 {
             if(command=="d"){
                 directionFacing='D';
             }
+            return directionFacing;
         }
 
         if(directionFacing=='S'){
@@ -90,6 +92,7 @@ public class Chandrayaan3 {
             if(command=="d"){
                 directionFacing='D';
             }
+            return directionFacing;
         }
 
         if(directionFacing=='E'){
@@ -105,6 +108,7 @@ public class Chandrayaan3 {
             if(command=="d"){
                 directionFacing='D';
             }
+            return directionFacing;
         }
 
         if(directionFacing=='W'){
@@ -120,6 +124,7 @@ public class Chandrayaan3 {
             if(command=="d"){
                 directionFacing='D';
             }
+            return directionFacing;
         }
         if(directionFacing=='U'){
             if(prevDirection=='N'){
@@ -178,6 +183,7 @@ public class Chandrayaan3 {
                     directionFacing='S';
                 }
             }
+            return directionFacing;
         }
 
         if(directionFacing=='D') {
@@ -237,6 +243,7 @@ public class Chandrayaan3 {
                     directionFacing = 'D';
                 }
             }
+            return directionFacing;
         }
         return directionFacing;
     }

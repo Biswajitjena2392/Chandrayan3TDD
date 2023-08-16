@@ -24,14 +24,14 @@ class Chandrayaan3Test {
 
     @Test
     void ShouldReturnPositionAfterChangingDirectionAndMovingOnce(){
-        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","f"}));
-        assertArrayEquals(new int[]{0,0,1},finalcoordinates);
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"r","b"}));
+        assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
     }
 
     @Test
     void ShouldReturnPositionAfterfacingUpThentoSomeDirectionAndMoving(){
-        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","l","f"}));
-        assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"f","r","u","b","l"}));
+        assertArrayEquals(new int[]{0,1,-1},finalcoordinates);
 
     }
 }
