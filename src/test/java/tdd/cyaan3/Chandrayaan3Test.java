@@ -29,7 +29,9 @@ class Chandrayaan3Test {
     }
 
     @Test
-    void ShouldReturnPositionAfterfacingUpThentoSomeDirection(){
+    void ShouldReturnPositionAfterfacingUpThentoSomeDirectionAndMoving(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","l","f"}));
+        assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
 
     }
 }
