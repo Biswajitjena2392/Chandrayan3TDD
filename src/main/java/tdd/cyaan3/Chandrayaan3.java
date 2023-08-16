@@ -42,10 +42,10 @@ public class Chandrayaan3 {
                     coords[2]++;
             }
             if(command.equals("l")){
-                directionFacing='W';
+                directionFacing=setDirection(directionFacing,prevDirection,command);
             }
             if(command.equals("r")){
-                directionFacing='E';
+                directionFacing=setDirection(directionFacing,prevDirection,command);
             }
             if(command.equals("u")){
                 prevDirection=directionFacing;
@@ -176,6 +176,65 @@ public class Chandrayaan3 {
                 }
                 if(command=="d"){
                     directionFacing='S';
+                }
+            }
+        }
+
+        if(directionFacing=='D') {
+            if (prevDirection == 'N') {
+                if (command == "l") {
+                    directionFacing = 'W';
+                }
+                if (command == "r") {
+                    directionFacing = 'E';
+                }
+                if (command == "u") {
+                    directionFacing = 'N';
+                }
+                if (command == "d") {
+                    directionFacing = 'D';
+                }
+            }
+            if (prevDirection == 'E') {
+                if (command == "l") {
+                    directionFacing = 'N';
+                }
+                if (command == "r") {
+                    directionFacing = 'S';
+                }
+                if (command == "u") {
+                    directionFacing = 'E';
+                }
+                if (command == "d") {
+                    directionFacing = 'D';
+                }
+            }
+            if (prevDirection == 'W') {
+                if (command == "l") {
+                    directionFacing = 'S';
+                }
+                if (command == "r") {
+                    directionFacing = 'N';
+                }
+                if (command == "u") {
+                    directionFacing = 'W';
+                }
+                if (command == "d") {
+                    directionFacing = 'D';
+                }
+            }
+            if (prevDirection == 'S') {
+                if (command == "l") {
+                    directionFacing = 'E';
+                }
+                if (command == "r") {
+                    directionFacing = 'W';
+                }
+                if (command == "u") {
+                    directionFacing = 'S';
+                }
+                if (command == "d") {
+                    directionFacing = 'D';
                 }
             }
         }
