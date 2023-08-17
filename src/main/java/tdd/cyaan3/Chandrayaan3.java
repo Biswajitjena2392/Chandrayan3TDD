@@ -38,6 +38,9 @@ public class Chandrayaan3 {
         return coords;
     }
 
+    //Note coords[0] represents Movement in x-axis i.e. East or west
+    //coords[1] represents Movement in y-axis i.e. North or Southbound
+    //coords[2] represent movement in z-axis i.e. Up or downwards movement
     private static int[] moveCyaanForward(int[] coords, char directionFacing){
         if(directionFacing=='N')
             coords[1]++;
@@ -72,34 +75,29 @@ public class Chandrayaan3 {
 
     private static char setDirection(char directionFacing,char prevDirection, String command){
         if(command=="f"||command=="b")
-            return directionFacing;
+            return directionFacing; //since the direction facing won't change by moving back or forth
+
         if(directionFacing=='N'){
             directionFacing=setDirectionWhenFacingNorth(directionFacing,command);
-            return directionFacing;
         }
 
-        if(directionFacing=='S'){
+        else if(directionFacing=='S'){
             directionFacing=setDirectionWhenFacingSouth(directionFacing,command);
-            return directionFacing;
         }
 
-        if(directionFacing=='E'){
+        else if(directionFacing=='E'){
             directionFacing=setDirectionWhenFacingEast(directionFacing,command);
-            return directionFacing;
         }
 
-        if(directionFacing=='W'){
+        else if(directionFacing=='W'){
             directionFacing=setDirectionWhenFacingWest(directionFacing,command);
-            return directionFacing;
         }
-        if(directionFacing=='U'){
+        else if(directionFacing=='U'){
             directionFacing=setDirectionWhenFacingUp(directionFacing,prevDirection,command);
-            return directionFacing;
         }
 
-        if(directionFacing=='D') {
+        else if(directionFacing=='D') {
             directionFacing=setDirectionWhenFacingDown(directionFacing,prevDirection,command);
-            return directionFacing;
         }
         return directionFacing;
     }

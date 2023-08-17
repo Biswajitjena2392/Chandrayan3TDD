@@ -17,11 +17,47 @@ class Chandrayaan3Test {
         assertArrayEquals(new int[]{0, 0, 0},finalcoordinates);
     }
     @Test
-    void ShouldReturnThePositionAfterMakingOneMove(){
+    void ShouldReturnThePositionAfterMakingOneMoveForward(){
         int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"f"});
         assertArrayEquals(new int[]{0,1,0},finalcoordinates);
     }
+    @Test
+    void ShouldReturnThePositionAfterMakingOneMoveBackWard(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"b"});
+        assertArrayEquals(new int[]{0,-1,0},finalcoordinates);
+    }
+    @Test
+    void TurnRight(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"r"});
+        assertArrayEquals(new int[]{0,0,0},finalcoordinates);
+    }
+    @Test
+    void TurnRightAndMoveForward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"r","f"});
+        assertArrayEquals(new int[]{1,0,0},finalcoordinates);
+    }
+    @Test
+    void TurnRightAndMoveBackWard(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"r","b"});
+        assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
+    }
+    @Test
+    void TurnLeft(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"l"});
+        assertArrayEquals(new int[]{0,0,0},finalcoordinates);
+    }
 
+    @Test
+    void TurnLeftAndMoveForward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"l","f"});
+        assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
+    }
+
+    @Test
+    void TurnLeftAndMoveBackward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"l","b"});
+        assertArrayEquals(new int[]{1,0,0},finalcoordinates);
+    }
     @Test
     void ShouldReturnPositionAfterChangingDirectionAndMovingOnce(){
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"r","b"}));
@@ -33,5 +69,11 @@ class Chandrayaan3Test {
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"f","r","u","b","l"}));
         assertArrayEquals(new int[]{0,1,-1},finalcoordinates);
 
+    }
+
+    @Test
+    void ReturnPositonAfterJustChangingDirectionMultipleTimes(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","r","d","l"}));
+        assertArrayEquals(new int[]{0,0,0},finalcoordinates);
     }
 }
