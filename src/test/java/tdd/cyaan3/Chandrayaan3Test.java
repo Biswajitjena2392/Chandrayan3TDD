@@ -58,6 +58,41 @@ class Chandrayaan3Test {
         int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"l","b"});
         assertArrayEquals(new int[]{1,0,0},finalcoordinates);
     }
+
+    @Test
+    void FaceUp(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"u"});
+        assertArrayEquals(new int[]{0,0,0},finalcoordinates);
+    }
+
+    @Test
+    void FaceUpAndMoveForward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"u","f"});
+        assertArrayEquals(new int[]{0,0,1},finalcoordinates);
+    }
+
+    @Test
+    void FaceUpAndMoveBackward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"u","b"});
+        assertArrayEquals(new int[]{0,0,-1},finalcoordinates);
+    }
+    @Test
+    void FaceDown(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"d"});
+        assertArrayEquals(new int[]{0,0,0},finalcoordinates);
+    }
+
+    @Test
+    void FaceDownAndMoveForward(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"d","f"});
+        assertArrayEquals(new int[]{0,0,-1},finalcoordinates);
+    }
+
+    @Test
+    void FaceDownAndMoveBackWard(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"d","b"});
+        assertArrayEquals(new int[]{0,0,1},finalcoordinates);
+    }
     @Test
     void ShouldReturnPositionAfterChangingDirectionAndMovingOnce(){
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"r","b"}));
