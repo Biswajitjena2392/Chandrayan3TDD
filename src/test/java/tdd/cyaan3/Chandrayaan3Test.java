@@ -94,18 +94,27 @@ class Chandrayaan3Test {
         assertArrayEquals(new int[]{0,0,1},finalcoordinates);
     }
     @Test
+    void MultipleForwardAndBackwardMovements(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition(new String[]{"f","f","f","f","f","b","b"});
+        assertArrayEquals(new int[]{0,3,0},finalcoordinates);
+    }
+
+    @Test
     void ShouldReturnPositionAfterChangingDirectionAndMovingOnce(){
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"r","b"}));
         assertArrayEquals(new int[]{-1,0,0},finalcoordinates);
     }
 
     @Test
-    void ShouldReturnPositionAfterfacingUpThentoSomeDirectionAndMoving(){
+    void QuestionTestCase(){
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"f","r","u","b","l"}));
         assertArrayEquals(new int[]{0,1,-1},finalcoordinates);
-
     }
-
+    @Test
+    void zigzagMovement(){
+        int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"f","r","f","l","f","r","f","l"}));
+        assertArrayEquals(new int[]{2,2,0},finalcoordinates);
+    }
     @Test
     void ReturnPositonAfterJustChangingDirectionMultipleTimes(){
         int[] finalcoordinates=Chandrayaan3.finalPosition((new String[]{"u","r","d","l"}));
