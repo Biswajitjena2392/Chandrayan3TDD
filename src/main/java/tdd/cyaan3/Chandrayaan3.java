@@ -37,6 +37,7 @@ public class Chandrayaan3 {
         }
         return coords;
     }
+
     private static int[] moveCyaanForward(int[] coords, char directionFacing){
         if(directionFacing=='N')
             coords[1]++;
@@ -73,188 +74,177 @@ public class Chandrayaan3 {
         if(command=="f"||command=="b")
             return directionFacing;
         if(directionFacing=='N'){
-            if (command=="l"){
-                directionFacing='W';
-            }
-            if(command=="r"){
-                directionFacing='E';
-            }
-            if(command=="u"){
-                directionFacing='U';
-            }
-            if(command=="d"){
-                directionFacing='D';
-            }
+            directionFacing=setDirectionWhenFacingNorth(directionFacing,command);
             return directionFacing;
         }
 
         if(directionFacing=='S'){
+            directionFacing=setDirectionWhenFacingSouth(directionFacing,command);
+            return directionFacing;
+        }
+
+        if(directionFacing=='E'){
+            directionFacing=setDirectionWhenFacingEast(directionFacing,command);
+            return directionFacing;
+        }
+
+        if(directionFacing=='W'){
+            directionFacing=setDirectionWhenFacingWest(directionFacing,command);
+            return directionFacing;
+        }
+        if(directionFacing=='U'){
+            directionFacing=setDirectionWhenFacingUp(directionFacing,prevDirection,command);
+            return directionFacing;
+        }
+
+        if(directionFacing=='D') {
+            directionFacing=setDirectionWhenFacingDown(directionFacing,prevDirection,command);
+            return directionFacing;
+        }
+        return directionFacing;
+    }
+
+    private static char setDirectionWhenFacingNorth(char directionFacing, String command){
+        if (command=="l"){
+            directionFacing='W';
+        }
+        if(command=="r"){
+            directionFacing='E';
+        }
+        if(command=="u"){
+            directionFacing='U';
+        }
+        if(command=="d"){
+            directionFacing='D';
+        }
+        return directionFacing;
+    }
+    private static char setDirectionWhenFacingSouth(char directionFacing, String command){
+        if (command=="l"){
+            directionFacing='E';
+        }
+        if(command=="r"){
+            directionFacing='W';
+        }
+        if(command=="u"){
+            directionFacing='U';
+        }
+        if(command=="d"){
+            directionFacing='D';
+        }
+        return directionFacing;
+    }
+
+    private static char setDirectionWhenFacingEast(char directionFacing, String command){
+        if (command=="l"){
+            directionFacing='N';
+        }
+        if(command=="r"){
+            directionFacing='S';
+        }
+        if(command=="u"){
+            directionFacing='U';
+        }
+        if(command=="d"){
+            directionFacing='D';
+        }
+        return directionFacing;
+    }
+    private static char setDirectionWhenFacingWest(char directionFacing, String command){
+        if (command=="l"){
+            directionFacing='S';
+        }
+        if(command=="r"){
+            directionFacing='N';
+        }
+        if(command=="u"){
+            directionFacing='U';
+        }
+        if(command=="d"){
+            directionFacing='D';
+        }
+        return directionFacing;
+    }
+
+    private static char setDirectionWhenFacingDown(char directionFacing, char prevDirection, String command){
+        if(command=="u")
+            directionFacing=prevDirection;
+        if(command=="d")
+            directionFacing='D';
+        if (prevDirection == 'N') {
+            if (command == "l") {
+                directionFacing = 'W';
+            }
+            if (command == "r") {
+                directionFacing = 'E';
+            }
+        }
+        if (prevDirection == 'E') {
+            if (command == "l") {
+                directionFacing = 'N';
+            }
+            if (command == "r") {
+                directionFacing = 'S';
+            }
+        }
+        if (prevDirection == 'W') {
+            if (command == "l") {
+                directionFacing = 'S';
+            }
+            if (command == "r") {
+                directionFacing = 'N';
+            }
+        }
+        if (prevDirection == 'S') {
+            if (command == "l") {
+                directionFacing = 'E';
+            }
+            if (command == "r") {
+                directionFacing = 'W';
+            }
+        }
+        return directionFacing;
+    }
+
+    private static char setDirectionWhenFacingUp(char directionFacing, char prevDirection, String command){
+        if(command=="u")
+            directionFacing='U';
+        if(command=="d")
+            directionFacing=prevDirection;
+        if(prevDirection=='N'){
+            if (command=="l"){
+                directionFacing='W';
+            }
+            if(command=="r"){
+                directionFacing='E';
+            }
+        }
+        if(prevDirection=='E'){
+            if (command=="l"){
+                directionFacing='N';
+            }
+            if(command=="r"){
+                directionFacing='S';
+            }
+        }
+        if(prevDirection=='W'){
+            if (command=="l"){
+                directionFacing='S';
+            }
+            if(command=="r"){
+                directionFacing='N';
+            }
+        }
+        if(prevDirection=='S'){
             if (command=="l"){
                 directionFacing='E';
             }
             if(command=="r"){
                 directionFacing='W';
             }
-            if(command=="u"){
-                directionFacing='U';
-            }
-            if(command=="d"){
-                directionFacing='D';
-            }
-            return directionFacing;
-        }
-
-        if(directionFacing=='E'){
-            if (command=="l"){
-                directionFacing='N';
-            }
-            if(command=="r"){
-                directionFacing='S';
-            }
-            if(command=="u"){
-                directionFacing='U';
-            }
-            if(command=="d"){
-                directionFacing='D';
-            }
-            return directionFacing;
-        }
-
-        if(directionFacing=='W'){
-            if (command=="l"){
-                directionFacing='S';
-            }
-            if(command=="r"){
-                directionFacing='N';
-            }
-            if(command=="u"){
-                directionFacing='U';
-            }
-            if(command=="d"){
-                directionFacing='D';
-            }
-            return directionFacing;
-        }
-        if(directionFacing=='U'){
-            if(prevDirection=='N'){
-                if (command=="l"){
-                    directionFacing='W';
-                }
-                if(command=="r"){
-                    directionFacing='E';
-                }
-                if(command=="u"){
-                    directionFacing='U';
-                }
-                if(command=="d"){
-                    directionFacing='N';
-                }
-            }
-            if(prevDirection=='E'){
-                if (command=="l"){
-                    directionFacing='N';
-                }
-                if(command=="r"){
-                    directionFacing='S';
-                }
-                if(command=="u"){
-                    directionFacing='U';
-                }
-                if(command=="d"){
-                    directionFacing='E';
-                }
-            }
-            if(prevDirection=='W'){
-                if (command=="l"){
-                    directionFacing='S';
-                }
-                if(command=="r"){
-                    directionFacing='N';
-                }
-                if(command=="u"){
-                    directionFacing='U';
-                }
-                if(command=="d"){
-                    directionFacing='W';
-                }
-            }
-            if(prevDirection=='S'){
-                if (command=="l"){
-                    directionFacing='E';
-                }
-                if(command=="r"){
-                    directionFacing='W';
-                }
-                if(command=="u"){
-                    directionFacing='U';
-                }
-                if(command=="d"){
-                    directionFacing='S';
-                }
-            }
-            return directionFacing;
-        }
-
-        if(directionFacing=='D') {
-            if (prevDirection == 'N') {
-                if (command == "l") {
-                    directionFacing = 'W';
-                }
-                if (command == "r") {
-                    directionFacing = 'E';
-                }
-                if (command == "u") {
-                    directionFacing = 'N';
-                }
-                if (command == "d") {
-                    directionFacing = 'D';
-                }
-            }
-            if (prevDirection == 'E') {
-                if (command == "l") {
-                    directionFacing = 'N';
-                }
-                if (command == "r") {
-                    directionFacing = 'S';
-                }
-                if (command == "u") {
-                    directionFacing = 'E';
-                }
-                if (command == "d") {
-                    directionFacing = 'D';
-                }
-            }
-            if (prevDirection == 'W') {
-                if (command == "l") {
-                    directionFacing = 'S';
-                }
-                if (command == "r") {
-                    directionFacing = 'N';
-                }
-                if (command == "u") {
-                    directionFacing = 'W';
-                }
-                if (command == "d") {
-                    directionFacing = 'D';
-                }
-            }
-            if (prevDirection == 'S') {
-                if (command == "l") {
-                    directionFacing = 'E';
-                }
-                if (command == "r") {
-                    directionFacing = 'W';
-                }
-                if (command == "u") {
-                    directionFacing = 'S';
-                }
-                if (command == "d") {
-                    directionFacing = 'D';
-                }
-            }
-            return directionFacing;
         }
         return directionFacing;
     }
+
 
 }
